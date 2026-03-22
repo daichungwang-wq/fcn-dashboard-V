@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>振宇 FCN 系統 V</title>
+
+<style>
+body {
+    font-family: -apple-system;
+    background:#f5f7fb;
+    padding:20px;
+}
+
+h1 {font-size:28px;margin-bottom:10px;}
+h2 {margin-top:30px;}
+
+.card {
+    background:white;
+    padding:16px;
+    border-radius:14px;
+    margin-bottom:14px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.05);
+}
+
+.tag {color:#4a6cf7;font-weight:600;}
+.good {color:#2e7d32;}
+.warn {color:#f9a825;}
+.bad {color:#c62828;}
+
+.btn {
+    padding:8px 12px;
+    border-radius:20px;
+    border:1px solid #ccc;
+    margin-right:6px;
+    cursor:pointer;
+}
+
+.active {
+    background:#4a6cf7;
+    color:white;
+}
+
+.detail {
+    display:none;
+    margin-top:10px;
+    color:#555;
+}
+</style>
+</head>
+
+<body>
+
+<h1>振宇 FCN 系統 V</h1>
+
+<h2>Module3-A｜標的評級與策略定位</h2>
+
+<!-- 模型說明 -->
+<div class="card">
+<b>模型說明</b><br><br>
+Baseline：長期定位<br>
+Pure：策略觀點<br>
+Event：市場情緒<br><br>
+
+<button class="btn" onclick="toggleExplain()">展開說明</button>
+
+<div id="explain" class="detail">
+ΔPure = Pure - Baseline<br>
+ΔEvent = Event - Pure<br><br>
+
+Pure ↑ = 基本面改善<br>
+Pure ↓ = 結構轉弱<br><br>
+
+Event ↑ = 情緒利多<br>
+Event ↓ = 短期風險
+</div>
+</div>
+
+<!-- 分類切換 -->
+<div class="card">
+<b>分類</b><br><br>
+
+<button class="btn active" onclick="filterGroup('all')">全部</button>
+<button class="btn" onclick="filterGroup('core')">核心</button>
+<button class="btn" onclick="filterGroup('growth')">成長</button>
+<button class="btn" onclick="filterGroup('defensive')">防禦</button>
+<button class="btn" onclick="filterGroup('cycle')">週期</button>
+<button class="btn" onclick="filterGroup('spec')">投機</button>
+
+</div>
+
+<!-- 股票區 -->
+<div id="list">
+
+<div class="card stock core">
+<b>TSM | Taiwan Semiconductor</b><br>
+<span class="tag">核心</span><br><br>
+
+Baseline：核心 (10)<br>
+Pure：核心 (10)<br>
+Event：核心 (9.6)<br>
+ΔEvent：<span class="bad">-0.4</span><br>
+
+<button class="btn" onclick="toggleDetail(this)">展開</button>
+
+<div class="detail">
+AI半導體核心資產，FCN主架構
+</div>
+</div>
+
+<div class="card stock core">
+<b>NVDA | NVIDIA</b><br>
+<span class="tag">核心</span><br><br>
+
+Baseline：核心 (10)<br>
+Pure：核心 (9.2)<br>
+Event：平衡 (8.7)<br>
+ΔEvent：<span class="bad">-0.5</span><br>
+
+<button class="btn" onclick="toggleDetail(this)">展開</button>
+
+<div class="detail">
+AI龍頭，但波動需監控
+</div>
+</div>
+
+<div class="card stock growth">
+<b>AMZN | Amazon</b><br>
+<span class="tag">成長</span><br><br>
+
+Baseline：成長 (8)<br>
+Pure：成長 (8.5)<br>
+Event：成長 (8.2)<br>
+ΔEvent：<span class="warn">-0.3</span><br>
+
+<button class="btn" onclick="toggleDetail(this)">展開</button>
+
+<div class="detail">
+電商 + AI 雲成長
+</div>
+</div>
+
+<div class="card stock defensive">
+<b>UNH | UnitedHealth</b><br>
+<span class="tag">防禦</span><br><br>
+
+Baseline：防禦 (8)<br>
+Pure：防禦 (7.8)<br>
+Event：防禦 (7.5)<br>
+ΔEvent：<span class="warn">-0.3</span><br>
+
+<button class="btn" onclick="toggleDetail(this)">展開</button>
+
+<div class="detail">
+醫療防禦資產
+</div>
+</div>
+
+</div>
+
+<script>
+
+function toggleExplain(){
+    const el = document.getElementById("explain");
+    el.style.display = el.style.display === "block" ? "none" : "block";
+}
+
+function toggleDetail(btn){
+    const card = btn.closest(".card");
+    const detail = card.querySelector(".detail");
+
+    const isHidden = detail.style.display === "none" || detail.style.display === "";
+
+    detail.style.display = isHidden ? "block" : "none";
+    btn.textContent = isHidden ? "收合" : "展開";
+}
+
+function filterGroup(group){
+    document.querySelectorAll(".stock").forEach(el=>{
+        if(group==="all"){
+            el.style.display="block";
+        } else {
+            el.style.display = el.classList.contains(group) ? "block" : "none";
+        }
+    });
+
+    document.querySelectorAll(".btn").forEach(b=>b.classList.remove("active"));
+    event.target.classList.add("active");
+}
+
+</script>
+
+</body>
+</html>
