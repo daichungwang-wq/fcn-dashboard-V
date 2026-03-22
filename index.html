@@ -344,367 +344,151 @@ h2 {margin-top:30px;}
 
 <h1>振宇 FCN 系統 V</h1>
 
-<h2>Module3-A｜標的評級與策略定位</h2>
+<div id="module3">
 
-<!-- 模型說明 -->
+<h2>模組三｜FCN 決策系統</h2>
+
+<!-- 🔥 控制列 -->
 <div class="card">
-<b>模型說明</b><br><br>
-Baseline：長期定位<br>
-Pure：策略觀點<br>
-Event：市場情緒<br><br>
-
-<button class="btn" onclick="toggleExplain()">展開說明</button>
-
-<div id="explain" class="detail">
-ΔPure = Pure - Baseline<br>
-ΔEvent = Event - Pure<br><br>
-
-Pure ↑ = 基本面改善<br>
-Pure ↓ = 結構轉弱<br><br>
-
-Event ↑ = 情緒利多<br>
-Event ↓ = 短期風險
-</div>
+  <button onclick="toggleAllM3(true)">全部展開</button>
+  <button onclick="toggleAllM3(false)">全部收合</button>
+  <button onclick="toggleDemoMode()">Demo模式</button>
 </div>
 
-<!-- 分類切換 -->
+<!-- 🔥 導航 -->
 <div class="card">
-<b>分類</b><br><br>
-
-<button class="btn active" onclick="filterGroup('all')">全部</button>
-<button class="btn" onclick="filterGroup('core')">核心</button>
-<button class="btn" onclick="filterGroup('growth')">成長</button>
-<button class="btn" onclick="filterGroup('defensive')">防禦</button>
-<button class="btn" onclick="filterGroup('cycle')">週期</button>
-<button class="btn" onclick="filterGroup('spec')">投機</button>
-
+  <b>快速導航：</b><br>
+  <a href="#m3-0">0</a>｜
+  <a href="#m3-7">範例</a>｜
+  <a href="#m3-8">Dashboard</a>｜
+  <a href="#m3-1">名詞</a>｜
+  <a href="#m3-2">統計</a>｜
+  <a href="#m3-3">分類</a>｜
+  <a href="#m3-6">FCN公式</a>｜
+  <a href="#m3-5">股票公式</a>｜
+  <a href="#m3-4">參數</a>
 </div>
 
-<!-- 股票區 -->
-<div id="list">
-
-<div class="card stock core">
-<b>TSM | Taiwan Semiconductor</b><br>
-<span class="tag">核心</span><br><br>
-
-Baseline：核心 (10)<br>
-Pure：核心 (10)<br>
-Event：核心 (9.6)<br>
-ΔEvent：<span class="bad">-0.4</span><br>
-
-<button class="btn" onclick="toggleDetail(this)">展開</button>
-
-<div class="detail">
-AI半導體核心資產，FCN主架構
+<!-- 0 -->
+<div class="card m3-section" id="m3-0">
+<h3 onclick="toggleSection(this)">0｜一句話總覽</h3>
+<div class="m3-content">
+👉 先看機會，再看風險；先看錯價，再等時機；先選標的，再組 FCN
 </div>
 </div>
 
-<div class="card stock core">
-<b>NVDA | NVIDIA</b><br>
-<span class="tag">核心</span><br><br>
+<!-- 7 -->
+<div class="card m3-section" id="m3-7">
+<h3 onclick="toggleSection(this)">7｜FCN 實例計算</h3>
+<div class="m3-content">
 
-Baseline：核心 (10)<br>
-Pure：核心 (9.2)<br>
-Event：平衡 (8.7)<br>
-ΔEvent：<span class="bad">-0.5</span><br>
+<b>✅ 範例一（建議承作）</b><br>
+TSM / MSFT / UNH / AMZN<br>
+(10+10+7+8)/4 = 8.75<br>
+總分 = 17.75<br>
+👉 建議承作
 
-<button class="btn" onclick="toggleDetail(this)">展開</button>
+<hr>
 
-<div class="detail">
-AI龍頭，但波動需監控
-</div>
-</div>
+<b>⚠️ 範例二（觀察）</b><br>
+總分 = 4.5<br>
+👉 觀察
 
-<div class="card stock growth">
-<b>AMZN | Amazon</b><br>
-<span class="tag">成長</span><br><br>
+<hr>
 
-Baseline：成長 (8)<br>
-Pure：成長 (8.5)<br>
-Event：成長 (8.2)<br>
-ΔEvent：<span class="warn">-0.3</span><br>
+<b>❌ 範例三（不做）</b><br>
+總分 = -1.4<br>
+👉 不做
 
-<button class="btn" onclick="toggleDetail(this)">展開</button>
+<br><br>
+💡 FCN風險看最差，不看平均
 
-<div class="detail">
-電商 + AI 雲成長
 </div>
 </div>
 
-<div class="card stock defensive">
-<b>UNH | UnitedHealth</b><br>
-<span class="tag">防禦</span><br><br>
+<!-- 8 -->
+<div class="card m3-section" id="m3-8">
+<h3 onclick="toggleSection(this)">8｜Decision Dashboard</h3>
+<div class="m3-content">
 
-Baseline：防禦 (8)<br>
-Pure：防禦 (7.8)<br>
-Event：防禦 (7.5)<br>
-ΔEvent：<span class="warn">-0.3</span><br>
+👉 M1 看機會  
+👉 M2 看風險  
+👉 M3 做決策  
+👉 M4 判斷模型能不能信  
 
-<button class="btn" onclick="toggleDetail(this)">展開</button>
+</div>
+</div>
 
-<div class="detail">
-醫療防禦資產
+<!-- 1 -->
+<div class="card m3-section" id="m3-1">
+<h3 onclick="toggleSection(this)">1｜核心名詞</h3>
+<div class="m3-content">
+
+Baseline = 長期  
+Pure = 模型  
+Event = 情緒  
+
+</div>
+</div>
+
+<!-- 2 -->
+<div class="card m3-section" id="m3-2">
+<h3 onclick="toggleSection(this)">2｜統計解釋</h3>
+<div class="m3-content">
+
+ΔPure = Pure - Baseline  
+ΔEvent = Event - Pure  
+
+👉 ΔPure 看價值  
+👉 ΔEvent 看情緒  
+
+</div>
+</div>
+
+<!-- 3 -->
+<div class="card m3-section" id="m3-3">
+<h3 onclick="toggleSection(this)">3｜五大分類</h3>
+<div class="m3-content">
+
+核心 10｜平衡 8｜防守 7｜收益 4｜避免 1
+
+</div>
+</div>
+
+<!-- 6 -->
+<div class="card m3-section" id="m3-6">
+<h3 onclick="toggleSection(this)">6｜FCN 模型公式</h3>
+<div class="m3-content">
+
+FCN Score =  
+平均 + 利率 + 分散  
+- 最差 - 波動 - 下檔  
+
+</div>
+</div>
+
+<!-- 5 -->
+<div class="card m3-section" id="m3-5">
+<h3 onclick="toggleSection(this)">5｜股票模型</h3>
+<div class="m3-content">
+
+Pure = Baseline + 調整  
+Event = Pure + 事件  
+
+</div>
+</div>
+
+<!-- 4 -->
+<div class="card m3-section" id="m3-4">
+<h3 onclick="toggleSection(this)">4｜基本參數</h3>
+<div class="m3-content">
+
+利率 / 波動 / 下檔 / 分散 / Worst-of
+
 </div>
 </div>
 
 </div>
-
-<script>
-
-function toggleExplain(){
-    const el = document.getElementById("explain");
-    el.style.display = el.style.display === "block" ? "none" : "block";
-}
-
-function toggleDetail(btn){
-    const card = btn.closest(".card");
-    const detail = card.querySelector(".detail");
-
-    const isHidden = detail.style.display === "none" || detail.style.display === "";
-
-    detail.style.display = isHidden ? "block" : "none";
-    btn.textContent = isHidden ? "收合" : "展開";
-}
-
-function filterGroup(group){
-    document.querySelectorAll(".stock").forEach(el=>{
-        if(group==="all"){
-            el.style.display="block";
-        } else {
-            el.style.display = el.classList.contains(group) ? "block" : "none";
-        }
-    });
-
-    document.querySelectorAll(".btn").forEach(b=>b.classList.remove("active"));
-    event.target.classList.add("active");
-}
-
-</script>
-
-</body>
-</html>
-  <div class="section">
-    <h2 style="font-size:26px;margin:0 0 14px;">Decision Dashboard</h2>
-    <div class="grid-2">
-      <div class="card">
-        <h3 style="color:var(--blue)">M1｜機會（Coverage）</h3>
-        <div class="line">股票建議率：37%</div>
-        <div class="line">FCN 建議率：27%</div>
-      </div>
-      <div class="card">
-        <h3 style="color:var(--blue)">M2｜本週風險指數</h3>
-        <div class="line">風險指數：7.1</div>
-        <div class="line">ΔPure：-0.3</div>
-        <div class="line">ΔEvent：-1.2</div>
-      </div>
-      <div class="card">
-        <h3 style="color:var(--blue)">M3｜FCN適合度</h3>
-        <div class="line">適合度：6.8</div>
-      </div>
-      <div class="card">
-        <h3 style="color:var(--blue)">M4｜系統解釋度</h3>
-        <div class="line">System Score：8.2</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="divider"></div>
-
-  <div class="section">
-    <h2 style="font-size:26px;margin:0 0 14px;">Module3-A｜標的評級與策略定位</h2>
-
-    <div class="summary-grid" style="margin-bottom:16px;">
-      <div class="card"><div class="mini-title">股票總數</div><div class="big">21</div></div>
-      <div class="card"><div class="mini-title">可做 FCN</div><div class="big">20</div></div>
-      <div class="card"><div class="mini-title">Event 上修</div><div class="big up">11</div></div>
-      <div class="card"><div class="mini-title">Event 下修</div><div class="big down">8</div></div>
-    </div>
-
-    <div class="group-tabs">
-      <button class="tab-btn active" onclick="switchGroup('all', this)">全部</button>
-      <button class="tab-btn" onclick="switchGroup('core', this)">核心</button>
-      <button class="tab-btn" onclick="switchGroup('growth', this)">成長</button>
-      <button class="tab-btn" onclick="switchGroup('defensive', this)">防禦</button>
-      <button class="tab-btn" onclick="switchGroup('cyclical', this)">週期</button>
-      <button class="tab-btn" onclick="switchGroup('speculative', this)">投機</button>
-    </div>
-
-    <div class="group-tabs" style="margin-top:-4px;">
-      <button class="tab-btn active" onclick="switchScope('all', this)">全部</button>
-      <button class="tab-btn" onclick="switchScope('recommended', this)">建議</button>
-    </div>
-
-    <div id="stocksContainer"></div>
-  </div>
-
-  <div class="section">
-    <h2 style="font-size:26px;margin:0 0 14px;">Module3-B｜FCN 組合遴選與建議</h2>
-    <div class="card">
-      <div class="line">開發中：下一步會加入 FCN basket、利率偏好、最差標的權重與分散性。</div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2 style="font-size:26px;margin:0 0 14px;">Module3-C｜外部 FCN 單筆評估</h2>
-    <div class="card">
-      <div class="line">開發中：下一步會加入外部 FCN 條件評估。</div>
-    </div>
-  </div>
-</div>
-
-<script>
-  let newsMode = "news";
-  let currentGroup = "all";
-  let currentScope = "all";
-
-  const positions = Array.from({length: 10}).map((_, i) => ({
-    id: `FCN-${i+1}`,
-    worstOf: ["AMZN","AVGO","NVDA","MSFT","GOOG","TSM","AAPL","QQQ","SPY","META"][i],
-    coupon: [0.18,0.22,0.25,0.21,0.19,0.20,0.24,0.17,0.23,0.18][i],
-    tenor: [7,9,6,9,12,6,9,6,12,9][i],
-    status: "健康"
-  }));
-
-  const stocks = [
-    {symbol:"TSM", name:"Taiwan Semiconductor Manufacturing", basket:"core", allow:true, baseline:"核心", baselineScore:10, pure:"核心", pureScore:10, event:"核心", eventScore:9.6, delta:-0.4, note:"AI半導體核心資產，適合FCN主骨架"},
-    {symbol:"NVDA", name:"NVIDIA", basket:"core", allow:true, baseline:"核心", baselineScore:10, pure:"核心", pureScore:9.2, event:"平衡", eventScore:8.7, delta:-0.5, note:"AI主軸龍頭，但事件與波動需持續監控"},
-    {symbol:"AVGO", name:"Broadcom", basket:"core", allow:true, baseline:"核心", baselineScore:10, pure:"核心", pureScore:9.4, event:"核心", eventScore:9.0, delta:-0.4, note:"AI與網通結合，適合核心配置"},
-    {symbol:"MSFT", name:"Microsoft", basket:"core", allow:true, baseline:"核心", baselineScore:10, pure:"核心", pureScore:9.6, event:"核心", eventScore:9.8, delta:0.2, note:"雲端與AI應用核心龍頭"},
-    {symbol:"AAPL", name:"Apple", basket:"core", allow:true, baseline:"核心", baselineScore:10, pure:"核心", pureScore:9.5, event:"核心", eventScore:9.2, delta:-0.3, note:"消費平台核心資產，流動性佳"},
-    {symbol:"GOOG", name:"Alphabet", basket:"core", allow:true, baseline:"核心", baselineScore:10, pure:"核心", pureScore:9.4, event:"核心", eventScore:9.5, delta:0.1, note:"平台與雲端核心標的"},
-    {symbol:"AMZN", name:"Amazon", basket:"growth", allow:true, baseline:"平衡", baselineScore:8, pure:"平衡", pureScore:8.0, event:"核心", eventScore:8.6, delta:0.6, note:"雲端強，但消費與估值使其較適合作為補位"},
-    {symbol:"META", name:"Meta Platforms", basket:"growth", allow:true, baseline:"平衡", baselineScore:8, pure:"平衡", pureScore:8.4, event:"核心", eventScore:8.9, delta:0.5, note:"平台型成長股，適合與核心搭配"},
-    {symbol:"CRM", name:"Salesforce", basket:"growth", allow:true, baseline:"平衡", baselineScore:8, pure:"平衡", pureScore:7.8, event:"平衡", eventScore:8.0, delta:0.2, note:"企業雲端成長股"},
-    {symbol:"NOW", name:"ServiceNow", basket:"growth", allow:true, baseline:"平衡", baselineScore:8, pure:"平衡", pureScore:7.9, event:"平衡", eventScore:8.1, delta:0.2, note:"企業數位化成長股"},
-    {symbol:"UNH", name:"UnitedHealth", basket:"defensive", allow:true, baseline:"防守", baselineScore:7, pure:"防守", pureScore:7.3, event:"防守", eventScore:7.2, delta:-0.1, note:"醫療防守核心，適合作為波動緩衝"},
-    {symbol:"PG", name:"Procter & Gamble", basket:"defensive", allow:true, baseline:"防守", baselineScore:7, pure:"防守", pureScore:7.2, event:"防守", eventScore:7.4, delta:0.2, note:"消費防守型資產"},
-    {symbol:"KO", name:"Coca-Cola", basket:"defensive", allow:true, baseline:"防守", baselineScore:7, pure:"防守", pureScore:7.1, event:"防守", eventScore:7.2, delta:0.1, note:"穩定現金流，適合防禦補位"},
-    {symbol:"CAT", name:"Caterpillar", basket:"cyclical", allow:true, baseline:"平衡", baselineScore:8, pure:"平衡", pureScore:7.4, event:"平衡", eventScore:7.1, delta:-0.3, note:"景氣循環股，需看總經與工業景氣"},
-    {symbol:"BA", name:"Boeing", basket:"cyclical", allow:false, baseline:"避免", baselineScore:1, pure:"避免", pureScore:2.0, event:"避免", eventScore:1.4, delta:-0.6, note:"事件風險高，不建議做FCN"},
-    {symbol:"GM", name:"General Motors", basket:"cyclical", allow:true, baseline:"收益", baselineScore:4, pure:"收益", pureScore:4.6, event:"收益", eventScore:4.4, delta:-0.2, note:"汽車循環股，偏收益型"},
-    {symbol:"PLTR", name:"Palantir", basket:"speculative", allow:false, baseline:"避免", baselineScore:1, pure:"收益", pureScore:3.8, event:"平衡", eventScore:7.2, delta:3.4, note:"高波動高題材，投機屬性強"},
-    {symbol:"COIN", name:"Coinbase", basket:"speculative", allow:false, baseline:"避免", baselineScore:1, pure:"收益", pureScore:3.0, event:"收益", eventScore:3.5, delta:0.5, note:"高度受加密市場影響"},
-    {symbol:"SOFI", name:"SoFi", basket:"speculative", allow:false, baseline:"避免", baselineScore:1, pure:"收益", pureScore:3.5, event:"收益", eventScore:3.3, delta:-0.2, note:"金融科技題材股，波動偏高"},
-    {symbol:"SPY", name:"SPDR S&P 500 ETF", basket:"core", allow:true, baseline:"核心", baselineScore:10, pure:"核心", pureScore:9.8, event:"核心", eventScore:9.9, delta:0.1, note:"最穩的大盤ETF核心資產"},
-    {symbol:"QQQ", name:"Invesco QQQ Trust", basket:"core", allow:true, baseline:"核心", baselineScore:10, pure:"核心", pureScore:9.1, event:"核心", eventScore:9.0, delta:-0.1, note:"科技ETF核心資產"}
-  ];
-
-  function groupClass(group){
-    if(group==="核心") return "tag-core";
-    if(group==="平衡") return "tag-balance";
-    if(group==="防守") return "tag-defensive";
-    return "tag-avoid";
-  }
-  function deltaClass(v){ return v>=0 ? "delta-positive" : "delta-negative"; }
-
-  function renderPositions(){
-    const el=document.getElementById("positionsContainer");
-    el.innerHTML = positions.map(p => `
-      <div class="position-card m2-position-card">
-        <div class="position-id">${p.id}</div>
-        <div class="line"><strong>狀態：</strong> <span class="up">${p.status}</span></div>
-        <div class="line"><strong>Worst-of：</strong> ${p.worstOf}</div>
-        <div class="line"><strong>距離下限價：</strong> --</div>
-        <button class="btn m2-detail-btn" onclick="toggleM2Detail(this)">展開詳細</button>
-        <div class="detail" data-detail>
-          <div class="line"><strong>年化配息：</strong> ${p.coupon}%</div>
-          <div class="line"><strong>天期：</strong> ${p.tenor} 個月</div>
-          <div class="line"><strong>到期：</strong> 未提供</div>
-          <div class="line"><strong>Worst-of：</strong> ${p.worstOf}</div>
-          <div class="line"><strong>距離下限價：</strong> --</div>
-        </div>
-      </div>
-    `).join("");
-  }
-
-  function stockCard(s){
-    return `
-      <div class="stock-card ${s.basket}">
-        <div class="stock-head">${s.symbol} ｜ ${s.name}</div>
-        <div class="stock-meta">${s.basket.toUpperCase()} ｜ ${s.allow ? '<span class="tag-core">可做 FCN</span>' : '<span class="tag-avoid">不做 FCN</span>'}</div>
-        <div class="stock-row">Baseline：<span class="${groupClass(s.baseline)}">${s.baseline}</span>（${s.baselineScore}）</div>
-        <div class="stock-row">Pure：<span class="${groupClass(s.pure)}">${s.pure}</span>（${s.pureScore}）</div>
-        <div class="stock-row">Event：<span class="${groupClass(s.event)}">${s.event}</span>（${s.eventScore}）</div>
-        <div class="stock-row">ΔEvent：<span class="${deltaClass(s.delta)}">${s.delta > 0 ? "+" : ""}${s.delta}</span></div>
-        <div class="stock-row muted">${s.note}</div>
-      </div>
-    `;
-  }
-
-  function renderStocks(){
-    const container=document.getElementById("stocksContainer");
-    let filtered=[...stocks];
-
-    if(currentGroup!=="all"){
-      filtered=filtered.filter(s=>s.basket===currentGroup);
-    }
-    if(currentScope==="recommended"){
-      filtered=filtered.filter(s=>s.allow);
-    }
-
-    container.innerHTML=filtered.map(stockCard).join("") || `<div class="card">目前沒有資料</div>`;
-  }
-
-  function switchGroup(group, btn){
-    currentGroup=group;
-    document.querySelectorAll(".group-tabs:first-of-type .tab-btn").forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active");
-    renderStocks();
-  }
-
-  function switchScope(scope, btn){
-    currentScope=scope;
-    document.querySelectorAll(".group-tabs:nth-of-type(2) .tab-btn").forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active");
-    renderStocks();
-  }
-
-  function toggleM2Detail(btn){
-    const card=btn.closest(".m2-position-card");
-    const detail=card.querySelector("[data-detail]");
-    const hidden=detail.style.display==="" || detail.style.display==="none";
-    detail.style.display=hidden?"block":"none";
-    btn.textContent=hidden?"收合詳細":"展開詳細";
-  }
-
-  function expandAllM2Details(){
-    document.querySelectorAll(".m2-position-card").forEach(card=>{
-      const detail=card.querySelector("[data-detail]");
-      const btn=card.querySelector(".m2-detail-btn");
-      detail.style.display="block";
-      btn.textContent="收合詳細";
-    });
-  }
-
-  function collapseAllM2Details(){
-    document.querySelectorAll(".m2-position-card").forEach(card=>{
-      const detail=card.querySelector("[data-detail]");
-      const btn=card.querySelector(".m2-detail-btn");
-      detail.style.display="none";
-      btn.textContent="展開詳細";
-    });
-  }
-
-  function toggleM3Explain(){
-    const el=document.getElementById("m3ExplainDetail");
-    el.style.display=(el.style.display==="block")?"none":"block";
-  }
-
-  function toggleNewsSection(){
-    const el=document.getElementById("newsSection");
-    el.style.display=(el.style.display==="none")?"block":"none";
-  }
-
-  function setNewsMode(mode){
-    newsMode=mode;
-    document.getElementById("pureModeBtn").classList.toggle("active", mode==="pure");
-    document.getElementById("newsModeBtn").classList.toggle("active", mode==="news");
-    document.getElementById("modeText").textContent =
-      mode==="news" ? "新聞加權（含市場情緒）" : "純模型（不含新聞）";
-  }
-
-  renderPositions();
-  renderStocks();
 </script>
 </body>
 </html>
